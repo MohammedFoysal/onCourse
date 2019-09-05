@@ -1,4 +1,3 @@
-function makeServer() {
     const express = require('express');
     const app = express();
     const bodyParser = require('body-parser');
@@ -67,7 +66,7 @@ function makeServer() {
         .custom((value, { req }) => {
             return value.length <= 200
         }),
-      check('trainer_names', 'Target audience must be present')
+      check('trainer_names', 'Trainer names must be present')
         .exists(),
     ], (req, res) => {
         const errors = validationResult(req);
@@ -84,6 +83,4 @@ function makeServer() {
             }
         });
     });
-}
 
-module.exports = makeServer;
