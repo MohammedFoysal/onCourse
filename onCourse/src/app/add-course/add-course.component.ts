@@ -19,9 +19,11 @@ export class AddCourseComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.course = new Course();
   }
 
   addCourse(courseForm) {
+    console.log(courseForm);
     if (courseForm.valid) {
         this.dataService.addCourse(this.course);
         console.log('added');
