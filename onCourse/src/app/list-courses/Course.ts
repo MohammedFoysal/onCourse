@@ -1,8 +1,11 @@
 export class Course{
-    courseName:string;
-    trainer:string;
+    course_id: number;
+    course_title:string;
+    location: string;
+    trainer_names:string;
+    start_date: string;
+    duration_hours: number;
     description:string;
-    targetAudience: string;
-    duration:number;
-  }
+    target_audience: string;
+}
   

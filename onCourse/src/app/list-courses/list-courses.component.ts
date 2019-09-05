@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-list-courses',
@@ -9,36 +10,36 @@ export class ListCoursesComponent implements OnInit {
 
 
   title: string;
-
+  data: DataService;
   listCourses: any[];
 
-  constructor() { }
+  constructor(dataService: DataService) { this.data = dataService}
   ngOnInit() {
     this.title = "List of courses";
 
 
-    this.listCourses = [
-      {courseName:"Computer Science",
-       trainer:"John Doe",
-       description:"A great course",
-       targetAudience: "Students",
-       duration:"4 years",
-    },
+    // this.listCourses = [
+    //   {courseName:"Computer Science",
+    //    trainer:"John Doe",
+    //    description:"A great course",
+    //    targetAudience: "Students",
+    //    duration:"4 years",
+    // },
 
-        {courseName:"Cyber Security",
-        trainer:"Marinela",
-        description:"Do not take this course",
-        targetAudience: "Teenagers",
-        duration:"2 years",
-    },
+    //     {courseName:"Cyber Security",
+    //     trainer:"Marinela",
+    //     description:"Do not take this course",
+    //     targetAudience: "Teenagers",
+    //     duration:"2 years",
+    // },
 
-      {courseName:"Networking",
-      trainer:"Beyonce",
-      description:"Course is okay",
-      targetAudience: "Students",
-      duration:"20 years",
-      }
-    ]
+    //   {courseName:"Networking",
+    //   trainer:"Beyonce",
+    //   description:"Course is okay",
+    //   targetAudience: "Students",
+    //   duration:"20 years",
+    //   }
+    // ]
   }
   
 }
