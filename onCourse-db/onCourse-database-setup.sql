@@ -10,7 +10,6 @@ CREATE TABLE IF NOT EXISTS Course(
     description VARCHAR(300) NOT NULL,
     start_date DATE NOT NULL,
     duration_hours DECIMAL(4,2) NOT NULL,
-    trainer_names VARCHAR(100) NOT NULL,
     target_audience VARCHAR(200) NOT NULL
 );
 
