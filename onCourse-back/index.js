@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const { check, validationResult, body } = require('express-validator');
+const moment = require('moment');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -24,12 +25,47 @@ app.post('/course', [
   check('course_title', 'Course title must be present')
     .exists()
     .custom((value, { req }) => {
-                    return value.length > 0
+        return value.length > 0
     }),
   check('course_title', 'Course title must not exceed a 100 characters')
     .custom((value, { req }) => {
         return value.length <= 100
-    })
+    }),
+  check('location', 'Location must be valid')
+    .custom((value, { req }) => {
+        const locations = ['Belfast', 'Derry', 'Dublin', 'London', 'Gdansk', 'Amsterdam', 'Boston', 'Frankfurt'];
+
+        return locations.includes(value.trim());
+    }),
+  check('start_date', 'Start date must not be in the past')
+    .custom((value, { req }) => {
+        const date = moment(value).format('YYYY-MM-DD');
+        const now = moment().subtract(1, "days").format("YYYY-MM-DD");
+
+        return moment(date).isAfter(now);
+    }),
+  check('duration_hours', 'Duration must be a number greater than 0')
+    .custom((value, { req }) => {
+        return value > 0;
+    }),
+  check('description', 'Description must be present')
+    .exists()
+    .custom((value, { req }) => {
+        return value.length > 0
+    }),
+  check('description', 'Description must not exceed a 300 characters')
+    .custom((value, { req }) => {
+        return value.length <= 300
+    }),
+  check('target_audience', 'Target audience must be present')
+    .exists()
+    .custom((value, { req }) => {
+        return value.length > 0
+    }),
+  check('target_audience', 'Target audience must not exceed a 200 characters')
+    .custom((value, { req }) => {
+        return value.length <= 200
+    }),
 ], (req, res) => {
     const errors = validationResult(req);
 
