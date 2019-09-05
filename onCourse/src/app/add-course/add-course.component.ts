@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Course } from '../list-courses/Course';
 import { format } from 'util';
+import { ListCoursesComponent } from '../list-courses/list-courses.component'
 
 @Component({
   selector: 'app-add-course',
