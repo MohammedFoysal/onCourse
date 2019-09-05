@@ -1,25 +1,36 @@
 <div class="container">
-    <form #courseFrom="ngForm">
+    <form #courseForm="ngForm" (ngSubmit)="addCourse(courseForm)">
         <div>
-            <h2 class="label">Name </h2>
-            <input type="text" name="courseName" id="" [(ngModel)] = "name">
+            <h2 class="label">Title </h2>
+            <input type="text" name="course_title" id="" [(ngModel)] = "course_title">
         
             <h2 class="label">Date</h2>
-            <input type="date" name="StartingDate" id="date" [(ngModel)] = "startingDate"> 
+            <input type="date" name="start_date" id="date" [(ngModel)] = "start_date"> 
         
             <h2 class="label">Location</h2>
-            <select name="" id="" class="locations">
-                 
+            <select name="location" id="" class="locations" [(ngModel)] = "location">
+                <option value="Belfast">Belfast</option>
+                <option value="Derry">Derry</option>
+                <option value="Dublin">Dublin</option>
+                <option value="London">London</option>
+                <option value="Gdansk">Gdansk</option>
+                <option value="Amsterdam">Amsterdam</option>
+                <option value="Boston">Boston</option>
+                <option value="Frankfurt">Frankfurt</option>
             </select>
         
             <h2 class="lebel">Description</h2>
             <input type="text" name="description" id="" [(ngModel)] = "description">
             
-            <h2 class="label">Trainer</h2>
-            <input type="text" name="traineeName" id="" [(ngModel)] = "traineeName">
+            <h2 class="label">Trainer Names</h2>
+            <input type="text" name="trainer_names" id="" [(ngModel)] = "trainer_names">
     
             <h2 class="label">Target Audience</h2>
-            <input type="text" name="targetAudience" id="" [(ngModel)] = "targetAudience">
+            <input type="text" name="target_audience" id="" [(ngModel)] = "target_audience">
+
+            <h2 class="label">Duration</h2>
+            <input type="number" name="duration_hours" id="" [(ngModel)] = "duration_hours">
+
 
             <input class="submitbtn" type="submit" value="submit">
         </div>

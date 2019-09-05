@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { Course } from '../list-courses/Course';
+import { format } from 'util';
 
 @Component({
   selector: 'app-add-course',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddCourseComponent implements OnInit {
 
-  constructor() { }
+  dataService: DataService;
+  course: Course;
+
+  constructor(dataService: DataService) { 
+    this.dataService = dataService;
+
+   }
 
   ngOnInit() {
   }
+
+  addCourse(courseForm) {
+    if (courseForm.valid) {
+        this.dataService.addCourse(this.course);
+        console.log('added');
+    } else {
+      console.log("Can't add")
+    }
+  }
+
+
 
 }
