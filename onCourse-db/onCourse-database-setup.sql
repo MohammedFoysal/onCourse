@@ -10,6 +10,5 @@ CREATE TABLE IF NOT EXISTS Course(
     start_date DATE NOT NULL,
     duration_hours DECIMAL(4,2) NOT NULL,
     trainer_names VARCHAR(100) NOT NULL,
-    target_audience VARCHAR(200) NOT NULL,
-    CONSTRAINT `start_date` CHECK (`start_date` > now())
+    target_audience VARCHAR(200) NOT NULL
 );
