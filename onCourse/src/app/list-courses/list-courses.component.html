@@ -1,0 +1,45 @@
+
+<h1>{{ title }}</h1>
+
+
+
+<!--
+make list
+
+ -->
+
+ <table class="table table-hover">
+
+
+    <!-- Head -->
+    <thead>
+    <tr>
+        
+      <th>Course Name</th>
+      <th>Trainer</th>
+      
+    </tr>
+    </thead>
+  
+  
+    <div *ngFor="let item of list; let hide = false" class="list">
+            <button (click)="hide = !hide">{{hide ? 'Show' : 'Hide'}}</button>
+            <p *ngIf="!hide" class="item-id">{{item.id}}</p>
+            <p *ngIf="!hide" class="item-name">{{item.name}}</p>
+          </div>
+    <!-- Content -->
+    <tr *ngFor="let course of listCourses;let show = false"> <!-- data.listCourses -->
+        <td>
+        {{ course.courseName }}
+      </td>
+      <td>
+        {{ course.trainer }}
+      </td>
+    
+      <button (click)="show = !show">{{show ? 'Hide' : 'Show'}}</button>
+
+      <p *ngIf="show">{{course.description }}</p>
+      <p *ngIf="show">{{course.targetAudience}}</p>
+      <p *ngIf="show">{{course.duration}}</p>
+    </tr>
+  </table>
