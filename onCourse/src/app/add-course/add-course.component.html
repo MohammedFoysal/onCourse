@@ -1,0 +1,27 @@
+<div class="container">
+    <form #courseFrom="ngForm">
+        <div>
+            <h2 class="label">Name </h2>
+            <input type="text" name="courseName" id="" [(ngModel)] = "name">
+        
+            <h2 class="label">Date</h2>
+            <input type="date" name="StartingDate" id="date" [(ngModel)] = "startingDate"> 
+        
+            <h2 class="label">Location</h2>
+            <select name="" id="" class="locations">
+                 
+            </select>
+        
+            <h2 class="lebel">Description</h2>
+            <input type="text" name="description" id="" [(ngModel)] = "description">
+            
+            <h2 class="label">Trainer</h2>
+            <input type="text" name="traineeName" id="" [(ngModel)] = "traineeName">
+    
+            <h2 class="label">Target Audience</h2>
+            <input type="text" name="targetAudience" id="" [(ngModel)] = "targetAudience">
+
+            <input class="submitbtn" type="submit" value="submit">
+        </div>
+    </form>
+</div>
