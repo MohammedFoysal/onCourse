@@ -84,3 +84,10 @@
         });
     });
 
+    app.get('/course', (req, res) => {
+      db.getCourses((err, rows) => {
+        if (err) return handleError(err);
+        res.send(rows);
+      })
+    });
+
