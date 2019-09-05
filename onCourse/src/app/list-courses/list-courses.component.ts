@@ -15,7 +15,6 @@ export class ListCoursesComponent implements OnInit {
 
   constructor(dataService: DataService) { this.data = dataService}
   ngOnInit() {
-    this.title = "List of courses";
 
 
     // this.listCourses = [
