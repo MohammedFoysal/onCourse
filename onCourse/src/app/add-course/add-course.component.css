@@ -11,23 +11,27 @@ input[type=text], select {
   
   input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #80aad8;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
   }
   
-  input[type=submit]:hover {
-    background-color: #45a049;
+  .seperator
+  {
+    margin-top: 1px;
   }
-  
+
   div {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
+    border-color: #80aad8 !important;
   }
 
   .container
@@ -54,3 +58,14 @@ input[type=text], select {
   {
     font-size: 20px;
   }
+
+  textarea
+  {
+    width: 100%;
+  }
+
+.invalid-feedback
+{
+  margin: 0;
+  padding: 0;
+}
