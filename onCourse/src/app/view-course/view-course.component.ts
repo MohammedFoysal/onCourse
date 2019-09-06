@@ -12,6 +12,8 @@ export class ViewCourseComponent implements OnInit {
   data: DataService;
   route: ActivatedRoute;
   id = "0";
+   parse = require('date-fns/parse')
+format = require('date-fns/format')
 
   constructor(dataService: DataService, route: ActivatedRoute) { 
     this.data = dataService
