@@ -49,4 +49,4 @@
 
 
 <app-list-course-event></app-list-course-event>
-<app-add-course-event></app-add-course-event>
+<app-add-course-event *ngIf="dataService.currentNewCourse"></app-add-course-event>
