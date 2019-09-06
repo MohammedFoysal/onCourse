@@ -14,6 +14,7 @@ export class AddCourseComponent implements OnInit {
 
   dataService: DataService;
   course: Course;
+  formIsValid:boolean = false;
 
   form = new FormGroup({
     course_title: new FormControl('', [Validators.required,Validators.maxLength(100)]),
@@ -47,6 +48,7 @@ export class AddCourseComponent implements OnInit {
   addCourse(courseForm) {
     console.log(courseForm);
     if (courseForm.valid) {
+        this.formIsValid = true;
         const courseToAdd: Course = this.course;
         this.dataService.addCourse(courseToAdd);
         alert("The course has been added");

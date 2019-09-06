@@ -72,5 +72,5 @@ input[type=text], select {
 
 .validForm
 {
-  background-color: green;
+  background-color: green !important;
 }
