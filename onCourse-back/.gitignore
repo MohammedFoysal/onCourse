@@ -1,5 +1,7 @@
 mysql.env
 
+.idea
+
 # Logs
 logs
 *.log
