@@ -13,14 +13,14 @@
             </div>
             <hr class="seperator"/>
 
-            <label for="inputText">Date</label>
+            <!-- <label for="inputText">Date</label>
             <input type="date" name="start_date" id="date" [(ngModel)] = "course.start_date"
             formControlName="date" [ngClass]="{'is-invalid':form.get('date').touched && form.get('date').invalid}" required> 
             <div class="invalid-feedback" *ngIf="form.get('date').touched && form.get('date').invalid">
                 <small class="form-text text-muted errorMsg" *ngIf="form.get('course_title').errors.required">Please enter the date of the course</small>
             </div>
-            <hr class="seperator"/>
-
+            <hr class="seperator"/> -->
+<!-- 
             <label for="inputText">Location</label>
             <select class="form-control" id="exampleFormControlSelect1" name="location" [(ngModel)] = "course.location"
             formControlName="location" [ngClass]="{'is-invalid':form.get('location').touched && form.get('location').invalid}" required>
@@ -36,7 +36,7 @@
             <div class="invalid-feedback" *ngIf="form.get('location').touched && form.get('location').invalid">
                 <small class="form-text text-muted errorMsg" *ngIf="form.get('location').errors.required">Please enter the location of the course</small>
             </div>
-            <hr class="seperator"/>
+            <hr class="seperator"/> -->
         
             <label for="inputText">Description</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description of the course" name="description" [(ngModel)] = "course.description"
@@ -48,14 +48,14 @@
 
             <hr class="seperator"/>
 
-            <label for="inputText">Trainer Names</label>
+            <!-- <label for="inputText">Trainer Names</label>
             <input type="text" name="trainer_names"  class="form-control" id="inputText" placeholder="Trainer Names" name="trainer_names" [(ngModel)] = "course.trainer_names"
             formControlName="trainer_names" [ngClass]="{'is-invalid':form.get('trainer_names').touched && form.get('trainer_names').invalid}" required>
             <hr class="seperator"/>
             <div class="invalid-feedback" *ngIf="form.get('trainer_names').touched && form.get('trainer_names').invalid">
                 <small class="form-text text-muted errorMsg" *ngIf="form.get('trainer_names').errors.required">Please enter the trainer's name of the course</small>
                 <small class="form-text text-muted errorMsg" *ngIf="form.get('trainer_names').errors.maxlength">Please enter a name less than 100 characters</small>
-            </div>
+            </div> -->
     
             <label for="inputText">Target Audience</label>
             <input type="text" class="form-control" id="inputText" placeholder="Target Audience" name="target_audience" [(ngModel)] = "course.target_audience"
@@ -66,14 +66,14 @@
             </div>
             <hr class="seperator"/>
 
-            <label for="inputText">Duration (Hours)</label>
+            <!-- <label for="inputText">Duration (Hours)</label>
             <input type="number" class="form-control full" id="inputNumber" placeholder="Duration (Hours)" name="duration_hours" [(ngModel)] = "course.duration_hours"
             formControlName="duration_hours" [ngClass]="{'is-invalid':form.get('duration_hours').touched && form.get('duration_hours').invalid}" required>
             <div class="invalid-feedback" *ngIf="form.get('duration_hours').touched && form.get('duration_hours').invalid">
                 <small class="form-text text-muted errorMsg" *ngIf="form.get('duration_hours').errors.required">Please enter the duration of the course</small>
             </div>
-            <hr class="seperator"/>
-            <input class="submitbtn" type="submit" value="submit" [ngClass]="{'validForm': form.valid}" [disabled]="!form.valid" (click)="dataService.getCourses();">
+            <hr class="seperator"/> -->
+            <input class="submitbtn" type="submit" value="Next" [ngClass]="{'validForm': form.valid}" [disabled]="!form.valid" (click)="dataService.getCourses();">
             
         </div>
     </form>

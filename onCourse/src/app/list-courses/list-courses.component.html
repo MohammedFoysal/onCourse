@@ -6,7 +6,8 @@
         <thead>
             <tr>
                 <th class="center">Course Name</th>
-                <th class="center">Trainer</th>
+                <th class="center">Target Audience</th>
+                <th class="center">Description</th>
                 <th class="center">More Info</th>
             </tr>
         </thead>
@@ -17,11 +18,14 @@
                     {{ course.course_title }}
                 </td>
                 <td class="center">
-                    {{ course.trainer_names }}
+                    {{ course.target_audience }}
+                </td>
+                <td class="center">
+                    <p >{{ course.description }}</p>
                 </td>
 
                 <td>
-                        <a [routerLink]="['/course/',course.course_id]">View More</a>
+                    <a [routerLink]="['/course/',course.course_id]">View More</a>
                 </td>
 
             </tr>
