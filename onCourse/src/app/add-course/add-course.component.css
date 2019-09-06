@@ -64,3 +64,8 @@ input[type=text], select {
     width: 100%;
   }
 
+.invalid-feedback
+{
+  margin: 0;
+  padding: 0;
+}

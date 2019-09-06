@@ -20588,7 +20588,7 @@ a.read-more {
 }
 
 .get-in-touch-ds #emailHelp {
-	color: white !important
+	color: red !important
 }
 
 .ds-get-in-touch-btn {
@@ -22753,4 +22753,9 @@ input#img-4:checked~.nav-dots-people label#img-dot-4 {
 .full
 {
   width: 100%;
+}
+
+.errorMsg
+{
+	color: red;
 }
