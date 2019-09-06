@@ -1,10 +1,10 @@
 {
-  "name": "tractorz-backend",
+  "name": "oncourse-back",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +15,10 @@
     "express-validator": "^6.2.0",
     "moment": "^2.24.0",
     "mysql": "^2.17.1"
+  },
+  "devDependencies": {
+    "jasmine": "^3.4.0",
+    "jasmine-console-reporter": "^3.1.0",
+    "supertest": "^4.0.2"
   }
 }
