@@ -21,7 +21,7 @@
                     {{ course.target_audience }}
                 </td>
                 <td class="center">
-                    <p >{{ course.description }}</p>
+                    <p>{{ course.description | slice:0:20}} <span *ngIf="course.description.length > 20">...</span> </p>
                 </td>
 
                 <td>
