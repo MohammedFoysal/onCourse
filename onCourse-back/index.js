@@ -64,7 +64,11 @@ const start = module.exports = function makeServer() {
       if (err) {
         return handleError(err, req, res);
       } else {
-        res.send({course_id: insertedId});
+        db.getCourse(insertedId, (err, rows) => {
+          if (err) return handleError(err, req, rows);
+          return res.send(rows[0]);
+        });
+
       }
     });
   });
@@ -114,10 +118,7 @@ const start = module.exports = function makeServer() {
       if (err) {
         return handleError(err, req, res);
       }
-      db.getCourse(insertedId, (err, rows) => {
-        if (err) return handleError(err, req, rows);
-        return res.send(rows[0]);
-      });
+      res.send({course_event_id: insertedId});
     })
   });
 

@@ -71,4 +71,4 @@ exports.getCourseEvents = function(course_id, callback) {
         callback(null, rows)
       }
   )
-}
+};
