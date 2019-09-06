@@ -50,11 +50,11 @@ describe('posting to course', () => {
     // Set up valid course
     course = {
       course_title: 'fred course',
-      location: 'Belfast',
-      duration_hours: 23,
-      start_date: '2019-09-23',
+      // location: 'Belfast',
+      // duration_hours: 23,
+      // start_date: '2019-09-23',
       description: 'fojhasdknjlfadsjldfsajklbafekljbafes',
-      trainer_names: 'fred',
+      // trainer_names: 'fred',
       target_audience: 'not fred'
     };
   });
@@ -65,7 +65,7 @@ describe('posting to course', () => {
     .send(course)
     .expect(200, done)
     .expect(function (response) {
-      assert(response.body.successful, true)
+      assert(response.body.course_title, course.course_title)
     });
   });
 
@@ -81,40 +81,40 @@ describe('posting to course', () => {
     })
   });
 
-  it('invalid location', function invalidCourseLocation(done) {
-    course.location = 'l'; //not valid
-    request(server)
-    .post('/course')
-    .send(course)
-    .expect(500, done)
-    .expect(function (response) {
-      assert(response.body.message.errors[0].msg, 'Location must be valid')
-    })
-  });
-
-  it('invalid start_date', function invalidCourseStartDate(done) {
-    course.start_date = '2018-12-12'; //In the past
-    request(server)
-    .post('/course')
-    .send(course)
-    .expect(500, done)
-    .expect(function (response) {
-      assert(response.body.message.errors[0].msg,
-          'Start date must not be in the past')
-    })
-  });
-
-  it('invalid duration_hours', function invalidCourseDurationHours(done) {
-    course.duration_hours = -1; //They give us time
-    request(server)
-    .post('/course')
-    .send(course)
-    .expect(500, done)
-    .expect(function (response) {
-      assert(response.body.message.errors[0].msg,
-          'Duration must be a number greater than 0')
-    })
-  });
+  // it('invalid location', function invalidCourseLocation(done) {
+  //   course.location = 'l'; //not valid
+  //   request(server)
+  //   .post('/course')
+  //   .send(course)
+  //   .expect(500, done)
+  //   .expect(function (response) {
+  //     assert(response.body.message.errors[0].msg, 'Location must be valid')
+  //   })
+  // });
+  //
+  // it('invalid start_date', function invalidCourseStartDate(done) {
+  //   course.start_date = '2018-12-12'; //In the past
+  //   request(server)
+  //   .post('/course')
+  //   .send(course)
+  //   .expect(500, done)
+  //   .expect(function (response) {
+  //     assert(response.body.message.errors[0].msg,
+  //         'Start date must not be in the past')
+  //   })
+  // });
+  //
+  // it('invalid duration_hours', function invalidCourseDurationHours(done) {
+  //   course.duration_hours = -1; //They give us time
+  //   request(server)
+  //   .post('/course')
+  //   .send(course)
+  //   .expect(500, done)
+  //   .expect(function (response) {
+  //     assert(response.body.message.errors[0].msg,
+  //         'Duration must be a number greater than 0')
+  //   })
+  // });
 
   it('invalid description', function invalidCourseDescription(done) {
     course.description = 'llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll'; //more than 300 chars
@@ -128,17 +128,17 @@ describe('posting to course', () => {
     })
   });
 
-  it('invalid trainer_names', function invalidCourseTrainerNames(done) {
-    course.trainer_names = 'fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred'; //too many freds
-    request(server)
-    .post('/course')
-    .send(course)
-    .expect(500, done)
-    .expect(function (response) {
-      assert(response.body.message.errors[0].msg,
-          'Total number of characters for trainer names must not exceed 100')
-    })
-  });
+  // it('invalid trainer_names', function invalidCourseTrainerNames(done) {
+  //   course.trainer_names = 'fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred, fred'; //too many freds
+  //   request(server)
+  //   .post('/course')
+  //   .send(course)
+  //   .expect(500, done)
+  //   .expect(function (response) {
+  //     assert(response.body.message.errors[0].msg,
+  //         'Total number of characters for trainer names must not exceed 100')
+  //   })
+  // });
 
   it('invalid target_audience', function invalidCourseTargetAudience(done) {
     course.target_audience = 'lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllstill needs to more that 200 characters'; //200+ chars
