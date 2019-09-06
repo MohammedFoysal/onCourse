@@ -1,6 +1,6 @@
 require('dotenv').config({path: 'mysql.env'});
-const mysql = require('mysql');
 
+const mysql = require('mysql');
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -36,7 +36,6 @@ exports.addCourseEvent = function (data, readyFn) {
       });
 };
 
-
 //Get all courses from the database
 exports.getCourses = function (callback) {
   db.query('SELECT * FROM Course',
@@ -60,3 +59,16 @@ exports.getCourse = function (courseId, callback) {
         callback(null, rows);
       });
 };
+
+export function getCourseEvents(course_id, callback) {
+  db.query(
+      'SELECT * FROM Course_Events WHERE course_id = ?',
+      [course_id],
+      function (err, rows) {
+        if (err) {
+          return callback(err, null);
+        }
+        callback(null, rows)
+      }
+  )
+}

@@ -111,8 +111,19 @@ const start = module.exports = function makeServer() {
     })
   ], (req, res) => {
     db.addCourseEvent(req.body, (err, insertedId) => {
-      if (err) return handleError(err, req, res);
+      if (err) {
+        return handleError(err, req, res);
+      }
       res.send({course_event_id: insertedId});
+    })
+  });
+
+  app.get('/course-events/:course_id', (req, res) => {
+    db.getCourseEvents(req.param.course_id, (err, rows) => {
+      if (err) {
+        return handleError(err, req, res);
+      }
+      res.send(rows);
     })
   });
 
