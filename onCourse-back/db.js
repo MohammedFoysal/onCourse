@@ -60,7 +60,7 @@ exports.getCourse = function (courseId, callback) {
       });
 };
 
-export function getCourseEvents(course_id, callback) {
+exports.getCourseEvents = function(course_id, callback) {
   db.query(
       'SELECT * FROM Course_Events WHERE course_id = ?',
       [course_id],
