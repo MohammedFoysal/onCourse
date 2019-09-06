@@ -11,6 +11,7 @@ import { DataService } from './data.service'
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component'
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ViewCourseComponent } from './view-course/view-course.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     AppComponent,
     HeaderComponent,
     routingComponents,
-    FooterComponent
+    FooterComponent,
+    ViewCourseComponent
   ],
   imports: [
     BrowserModule,

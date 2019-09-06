@@ -11,34 +11,11 @@ export class ListCoursesComponent implements OnInit {
 
   title: string;
   data: DataService;
-  listCourses: any[];
+  //listCourses: any[];
 
   constructor(dataService: DataService) { this.data = dataService}
   ngOnInit() {
 
-
-    // this.listCourses = [
-    //   {courseName:"Computer Science",
-    //    trainer:"John Doe",
-    //    description:"A great course",
-    //    targetAudience: "Students",
-    //    duration:"4 years",
-    // },
-
-    //     {courseName:"Cyber Security",
-    //     trainer:"Marinela",
-    //     description:"Do not take this course",
-    //     targetAudience: "Teenagers",
-    //     duration:"2 years",
-    // },
-
-    //   {courseName:"Networking",
-    //   trainer:"Beyonce",
-    //   description:"Course is okay",
-    //   targetAudience: "Students",
-    //   duration:"20 years",
-    //   }
-    // ]
   }
   
 }

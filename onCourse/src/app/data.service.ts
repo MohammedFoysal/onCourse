@@ -7,8 +7,8 @@ import { Course } from './list-courses/Course';
 })
 export class DataService {
   
-  courses: Course[] = [];
-
+  courses: Course[];
+  course: Course = new Course();
 
   constructor(private http: HttpClient) { 
     this.getCourses();
@@ -16,14 +16,29 @@ export class DataService {
 
 
   public addCourse(course: Course): void {
-    this.http.post<Course[]>('/api/course', course).subscribe(courses => {
-        this.courses = courses;
+    this.http.post<Course>('/api/course', course).subscribe(res => {
+      if(res[0] == null){
+        console.error(res);
+      } else {
+        console.log("Successfully added")
+      }
     })
   }
 
   getCourses() : void {
-    this.http.get<Course[]>('/api/course').subscribe(courses => {
-      this.courses = courses;
+    this.http.get<Course[]>('/api/courses').subscribe(res => {
+      console.log(res)
+      if(res[0] == null){
+        console.error(res);
+      } else {
+        this.courses = res;
+      }
+    });
+  }
+
+  getCourse(id) : void {
+    this.http.get<Course>('/api/course/' + id).subscribe(course => {
+      this.course = course;
     });
   }
 

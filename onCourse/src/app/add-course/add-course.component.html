@@ -1,6 +1,6 @@
 <h1 class="center">Adding Course</h1>
 
-<div class="container">
+<div class="container m-b-100">
     <form #courseForm="ngForm" (ngSubmit)="form.valid && addCourse(courseForm)" [formGroup]="form">
         <div>
             <label for="inputText">Title</label>
@@ -66,14 +66,14 @@
             </div>
             <hr class="seperator"/>
 
-            <label for="inputText">Duration</label>
-            <input type="number" class="form-control full" id="inputNumber" placeholder="Duration" name="duration_hours" [(ngModel)] = "course.duration_hours"
+            <label for="inputText">Duration (Hours)</label>
+            <input type="number" class="form-control full" id="inputNumber" placeholder="Duration (Hours)" name="duration_hours" [(ngModel)] = "course.duration_hours"
             formControlName="duration_hours" [ngClass]="{'is-invalid':form.get('duration_hours').touched && form.get('duration_hours').invalid}" required>
             <div class="invalid-feedback" *ngIf="form.get('duration_hours').touched && form.get('duration_hours').invalid">
                 <small class="form-text text-muted errorMsg" *ngIf="form.get('duration_hours').errors.required">Please enter the duration of the course</small>
             </div>
             <hr class="seperator"/>
-            <input class="submitbtn" type="submit" value="submit">
+            <input class="submitbtn" type="submit" value="submit" [ngClass]="{'validForm': '!form.valid'}" [disabled]="!form.valid" (click)="dataService.getCourses();">
             
         </div>
     </form>
