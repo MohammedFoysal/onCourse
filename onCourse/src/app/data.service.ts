@@ -8,7 +8,7 @@ import { Course } from './list-courses/Course';
 export class DataService {
   
   courses: Course[] = [];
-
+  course: Course = new Course();
 
   constructor(private http: HttpClient) { 
     this.getCourses();
@@ -22,8 +22,14 @@ export class DataService {
   }
 
   getCourses() : void {
-    this.http.get<Course[]>('/api/course').subscribe(courses => {
+    this.http.get<Course[]>('/api/courses').subscribe(courses => {
       this.courses = courses;
+    });
+  }
+
+  getCourse(id) : void {
+    this.http.get<Course>('/api/course/' + id).subscribe(course => {
+      this.course = course;
     });
   }
 

@@ -87,28 +87,19 @@ module.exports = function makeServer() {
       return handleError(errors, req, res);
     }
 
-    db.addCourse(req.body, (err, insertedId) => {
-      if (err) {
-        return handleError(err, req, res);
-      } else {
-        res.send({successful: true});
-      }
+    app.get('/courses', (req, res) => {
+      db.getCourses((err, rows) => {
+        if (err) return handleError(err);
+        res.send(rows);
+      })
     });
-  });
 
-  app.get('/courses', (req, res) => {
-    db.getCourses((err, rows) => {
-      if (err) return handleError(err);
-      res.send(rows);
-    })
-  });
-
-  app.get('/course/:id', (req, res) => {
-    db.getCourse(req.params.id, (err, rows) => {
-      if (err) return handleError(err);
-      res.send(rows[0]);
-    })
-  });
+    app.get('/course/:id', (req, res) => {
+      db.getCourse(req.params.id, (err, rows) => {
+        if (err) return handleError(err);
+        res.send(rows[0]);
+      })
+    });
 
   return server;
 }
