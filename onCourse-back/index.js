@@ -96,12 +96,17 @@ module.exports = function makeServer() {
     });
   });
 
-  app.get('/course', (req, res) => {
+  app.get('/courses', (req, res) => {
     db.getCourses((err, rows) => {
-      if (err) {
-        return handleError(err);
-      }
+      if (err) return handleError(err);
       res.send(rows);
+    })
+  });
+
+  app.get('/course/:id', (req, res) => {
+    db.getCourse(req.params.id, (err, rows) => {
+      if (err) return handleError(err);
+      res.send(rows[0]);
     })
   });
 
