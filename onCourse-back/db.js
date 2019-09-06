@@ -38,7 +38,7 @@ exports.addCourseEvent = function (data, readyFn) {
 
 //Get all courses from the database
 exports.getCourses = function (callback) {
-  db.query('SELECT * FROM Course',
+  db.query('SELECT course_id, course_title, location, description, DATE_FORMAT(start_date, "%d-%m-%Y") AS start_date, duration_hours, target_audience, trainer_names FROM Course LEFT JOIN Course_Events USING(course_id)',
       function (err, rows) {
         if (err) {
           return callback(err, null);
