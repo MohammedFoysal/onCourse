@@ -73,7 +73,7 @@
                 <small class="form-text text-muted errorMsg" *ngIf="form.get('duration_hours').errors.required">Please enter the duration of the course</small>
             </div>
             <hr class="seperator"/>
-            <input class="submitbtn" type="submit" value="submit" [ngClass]="{'validForm': '!form.valid'}" [disabled]="!form.valid" (click)="dataService.getCourses();">
+            <input class="submitbtn" type="submit" value="submit" [ngClass]="{'validForm': form.valid}" [disabled]="!form.valid" (click)="dataService.getCourses();">
             
         </div>
     </form>
