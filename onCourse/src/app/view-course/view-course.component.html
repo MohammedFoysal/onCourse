@@ -1,17 +1,24 @@
 <div>
 
-    <div *ngIf="data.course" class="course center">
+    <div *ngIf="data.course" class="course container">
         <h1 class="center">Course: {{ data.course.course_title }}</h1>
 
-        {{ data.course.location }} <br>
+        Location: {{ data.course.location }} <br>
 
-        {{ data.course.start_date }} <br>
+        {{ data.course.start_date }} | {{ data.course.duration_hours }} Hours <br><br>
 
-        {{ data.course.duration_hours }} Hours <br>
+        Target Audience:
+        {{ data.course.target_audience }} <br>
 
-        {{ data.course.target_audience }} <br>        
-
+        Trainer names:
         {{ data.course.trainer_names }} <br>        
+
+        <hr>
+
+        <div class="description">
+            Description: <br>
+            {{ data.course.description }} <br>
+        </div>
 
     </div>
 </div>
