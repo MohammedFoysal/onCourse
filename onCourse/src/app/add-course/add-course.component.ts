@@ -19,12 +19,12 @@ export class AddCourseComponent implements OnInit {
 
   form = new FormGroup({
     course_title: new FormControl('', [Validators.required,Validators.maxLength(100)]),
-    date: new FormControl('', Validators.required),
-    location: new FormControl('', Validators.required),
+    // date: new FormControl('', Validators.required),
+    // location: new FormControl('', Validators.required),
     description: new FormControl('', [Validators.required, Validators.maxLength(300)]),
-    trainer_names: new FormControl('', [Validators.required,Validators.maxLength(100)]),
-    target_audience: new FormControl('', [Validators.required,Validators.maxLength(200)]),
-    duration_hours: new FormControl('', Validators.required)
+    // trainer_names: new FormControl('', [Validators.required,Validators.maxLength(100)]),
+    target_audience: new FormControl('', [Validators.required,Validators.maxLength(200)])
+    // duration_hours: new FormControl('', Validators.required)
 
     // email: new FormControl('', [
     //   Validators.required,
