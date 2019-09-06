@@ -56,7 +56,8 @@ export class AddCourseComponent implements OnInit {
         const courseToAdd: Course = this.course;
         this.dataService.addCourse(courseToAdd);
         alert("The course has been added");
-        location.reload();
+        
+        // location.reload();
     } else {
       console.log("Can't add")
       alert("The course could not be added");

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-add-course-event',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddCourseEventComponent implements OnInit {
 
-  constructor() { }
+  data: DataService;
+
+  constructor(data: DataService) { 
+    this.data = data;
+
+   }
 
   ngOnInit() {
   }

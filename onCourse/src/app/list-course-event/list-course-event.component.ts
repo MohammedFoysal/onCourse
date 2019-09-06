@@ -15,8 +15,13 @@ export class ListCourseEventComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.data.getCourseEvents(1);
+    //todo change thgis
+    if (this.data.currentNewCourse != null) {
+      this.data.getCourseEvents(this.data.currentNewCourse.course_id);
+    }
   }
+
+  
 
 
 

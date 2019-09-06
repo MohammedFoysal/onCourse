@@ -13,6 +13,7 @@ export class DataService {
 
   courseEvents: CourseEvent[];
   currentNewCourse: Course;
+  showAddCourseEvent: Boolean = false;
 
   constructor(private http: HttpClient) { 
     this.getCourses();
@@ -21,10 +22,15 @@ export class DataService {
 
   public addCourse(course: Course): void {
     this.http.post<Course>('/api/course', course).subscribe(res => {
-      if(res[0] == null){
+      console.log(res);
+      if(res == null){
         console.error(res);
       } else {
         console.log("Successfully added")
+
+        this.currentNewCourse = res; 
+        // this.getCourseEvents(this.currentNewCourse.course_id);
+        this.getCourseEvents(1);
       }
     })
   }

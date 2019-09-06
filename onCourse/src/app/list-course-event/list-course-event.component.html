@@ -1,6 +1,7 @@
-<div class="course-events container">
+<div class="course-events container" *ngIf="data.currentNewCourse">
     <h2 class="center">Course Events</h2>
 
+    <button (click)="data.showAddCourseEvent = true">Add Course Event</button>
 
     <table>
             <thead>
