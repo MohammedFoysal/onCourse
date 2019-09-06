@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './footer/footer.component'
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ViewCourseComponent } from './view-course/view-course.component';
+import { AddCourseEventComponent } from './add-course-event/add-course-event.component';
+import { ListCourseEventComponent } from './list-course-event/list-course-event.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { ViewCourseComponent } from './view-course/view-course.component';
     HeaderComponent,
     routingComponents,
     FooterComponent,
-    ViewCourseComponent
+    ViewCourseComponent,
+    AddCourseEventComponent,
+    ListCourseEventComponent
   ],
   imports: [
     BrowserModule,
