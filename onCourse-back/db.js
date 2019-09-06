@@ -61,6 +61,7 @@ exports.getCourse = function (courseId, callback) {
 };
 
 exports.getCourseEvents = function(course_id, callback) {
+  console.log(course_id);
   db.query(
       'SELECT * FROM Course_Events WHERE course_id = ?',
       [course_id],

@@ -119,7 +119,7 @@ const start = module.exports = function makeServer() {
   });
 
   app.get('/course-events/:course_id', (req, res) => {
-    db.getCourseEvents(req.param.course_id, (err, rows) => {
+    db.getCourseEvents(req.params.course_id, (err, rows) => {
       if (err) {
         return handleError(err, req, res);
       }
