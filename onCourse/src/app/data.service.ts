@@ -46,17 +46,17 @@ export class DataService {
   }
 
   getCourseEvents(course_id) : void {
-    // this.http.get<CourseEvent[]>('/api/course-events/' + course_id).subscribe(res => {
-    //   if(res[0] == null){
-    //     console.error(res);
-    //   } else {
-    //     this.courseEvents = res;
-    //   }
-    // });
+    this.http.get<CourseEvent[]>('/api/course-events/' + course_id).subscribe(res => {
+      if(res[0] == null){
+        console.error(res);
+      } else {
+        this.courseEvents = res;
+      }
+    });
 
-    this.courseEvents = [
-      {course_event_id: 3, course_id: 2, location: 'London', start_date: '2019-04-03', duration_hours: 3, trainer_names: 'someone'}
-    ]
+    // this.courseEvents = [
+    //   {course_event_id: 3, course_id: 2, location: 'London', start_date: '2019-04-03', duration_hours: 3, trainer_names: 'someone'}
+    // ]
   }
 
 }
