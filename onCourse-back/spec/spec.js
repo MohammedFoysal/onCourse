@@ -2,7 +2,9 @@ const request = require('supertest');
 const assert = require("assert");
 let server = require('../index')();
 
+// Reporters
 const JasmineConsoleReporter = require('jasmine-console-reporter');
+let HtmlReporter = require('jasmine-pretty-html-reporter').Reporter;
 
 const reporter = new JasmineConsoleReporter({
   colors: 1,           // (0|false)|(1|true)|2
@@ -17,6 +19,9 @@ const reporter = new JasmineConsoleReporter({
 });
 
 jasmine.getEnv().addReporter(reporter);
+jasmine.getEnv().addReporter(new HtmlReporter( {
+  path: './results'
+}));
 
 
 describe('loading express', () => {
