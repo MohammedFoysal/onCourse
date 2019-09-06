@@ -14,6 +14,13 @@ CREATE TABLE IF NOT EXISTS Course(
     trainer_names VARCHAR(100) NOT NULL
 );
 
+DROP USER IF EXISTS kainos_emp@localhost;
+DROP USER IF EXISTS map_emp@localhost;
+CREATE USER kainos_emp@localhost IDENTIFIED WITH mysql_native_password BY 'password';
+CREATE USER map_emp@localhost IDENTIFIED WITH mysql_native_password BY 'password';
+GRANT SELECT ON onCourse_db.Course TO kainos_emp@localhost;
+GRANT SELECT, INSERT, UPDATE ON onCourse_db.Course TO map_emp@localhost;
+
 -- CREATE TABLE IF NOT EXISTS Trainer(
 -- 	trainer_id smallint PRIMARY KEY auto_increment,
 -- 	f_name VARCHAR(80),

@@ -14,8 +14,9 @@
             <hr class="seperator"/>
 
             <label for="inputText">Date</label>
-            <input type="date" name="start_date" id="date" [(ngModel)] = "course.start_date"
+            <input type="date" name="start_date" id="date" (blur)="compareDates($event.target.value)" [(ngModel)] = "course.start_date"
             formControlName="date" [ngClass]="{'is-invalid':form.get('date').touched && form.get('date').invalid}" required> 
+            <small class="form-text text-muted errorMsg" *ngIf="!dateCheck">Please enter future date</small>
             <div class="invalid-feedback" *ngIf="form.get('date').touched && form.get('date').invalid">
                 <small class="form-text text-muted errorMsg" *ngIf="form.get('course_title').errors.required">Please enter the date of the course</small>
             </div>
