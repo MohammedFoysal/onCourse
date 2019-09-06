@@ -22,7 +22,7 @@
             </div>
 
             <hr class="seperator"/>
-
+    
             <label for="inputText">Target Audience</label>
             <input type="text" class="form-control" id="inputText" placeholder="Target Audience" name="target_audience" [(ngModel)] = "course.target_audience"
             formControlName="target_audience" [ngClass]="{'is-invalid':form.get('target_audience').touched && form.get('target_audience').invalid}" required>
