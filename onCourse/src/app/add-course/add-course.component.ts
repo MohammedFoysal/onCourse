@@ -5,7 +5,6 @@ import { format } from 'util';
 import { ListCoursesComponent } from '../list-courses/list-courses.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'app-add-course',
   templateUrl: './add-course.component.html',
@@ -48,10 +47,13 @@ export class AddCourseComponent implements OnInit {
   addCourse(courseForm) {
     console.log(courseForm);
     if (courseForm.valid) {
-        this.dataService.addCourse(this.course);
-        console.log('added');
+        const courseToAdd: Course = this.course;
+        this.dataService.addCourse(courseToAdd);
+        alert("The course has been added");
+        location.reload();
     } else {
       console.log("Can't add")
+      alert("The course could not be added");
     }
   }
 

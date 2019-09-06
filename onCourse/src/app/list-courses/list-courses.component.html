@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let course of data.courses; let show = false" class="center">
+            <tr *ngFor="let course of data.courses" class="center">
                 <!-- data.listCourses -->
                 <td class="center">
                     {{ course.course_title }}
@@ -27,4 +27,5 @@
             </tr>
         </tbody>
     </table>
+
 </div>
