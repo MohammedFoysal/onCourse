@@ -76,7 +76,8 @@ const start = module.exports = function makeServer() {
     .custom((value, {req}) => {
       return value.length > 0
     }),
-    check('trainer_names', 'Total number of characters for trainer names must not exceed 100')
+    check('trainer_names',
+        'Total number of characters for trainer names must not exceed 100')
     .custom((value, {req}) => {
       return value.length <= 100
     })
@@ -96,21 +97,27 @@ const start = module.exports = function makeServer() {
     });
   });
 
-    app.get('/courses', (req, res) => {
-      db.getCourses((err, rows) => {
-        if (err) return handleError(err);
-        res.send(rows);
-      })
-    });
+  app.get('/courses', (req, res) => {
+    db.getCourses((err, rows) => {
+      if (err) {
+        return handleError(err);
+      }
+      res.send(rows);
+    })
+  });
 
-    app.get('/course/:id', (req, res) => {
-      db.getCourse(req.params.id, (err, rows) => {
-        if (err) return handleError(err);
-        res.send(rows[0]);
-      })
-    });
+  app.get('/course/:id', (req, res) => {
+    db.getCourse(req.params.id, (err, rows) => {
+      if (err) {
+        return handleError(err);
+      }
+      res.send(rows[0]);
+    })
+  });
 
   return server;
-}
+};
 
-start();
+if (!process.env.NODE_ENV) {
+  start();
+}
