@@ -26,7 +26,7 @@ export class DataService {
   }
 
   getCourses() : void {
-    this.http.get<Course[]>('/api/course').subscribe(res => {
+    this.http.get<Course[]>('/api/courses').subscribe(res => {
       console.log(res)
       if(res[0] == null){
         console.error(res);
