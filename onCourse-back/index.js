@@ -114,7 +114,10 @@ const start = module.exports = function makeServer() {
       if (err) {
         return handleError(err, req, res);
       }
-      res.send({course_event_id: insertedId});
+      db.getCourse(insertedId, (err, rows) => {
+        if (err) return handleError(err, req, rows);
+        return res.send(rows[0]);
+      });
     })
   });
 
