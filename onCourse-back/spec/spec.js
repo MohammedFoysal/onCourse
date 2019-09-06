@@ -1,5 +1,6 @@
 const request = require('supertest');
 const assert = require("assert");
+
 let server = require('../index')();
 
 // Reporters
@@ -12,22 +13,21 @@ const reporter = new JasmineConsoleReporter({
   verbosity: 4,        // (0|false)|1|2|(3|true)|4|Object
   listStyle: 'indent', // "flat"|"indent"
   timeUnit: 'ms',      // "ms"|"ns"|"s"
-  timeThreshold: { ok: 500, warn: 1000, ouch: 3000 }, // Object|Number
+  timeThreshold: {ok: 500, warn: 1000, ouch: 3000}, // Object|Number
   activity: false,     // boolean or string ("dots"|"star"|"flip"|"bouncingBar"|...)
   emoji: true,
   beep: true
 });
 
 jasmine.getEnv().addReporter(reporter);
-jasmine.getEnv().addReporter(new HtmlReporter( {
+jasmine.getEnv().addReporter(new HtmlReporter({
   path: './results'
 }));
 
-
 describe('loading express', () => {
-  it('responds to /course get', function testCourse(done) {
+  it('responds to /courses get', function testCourse(done) {
     request(server)
-    .get('/course')
+    .get('/courses')
     .expect(200, done);
   });
 
