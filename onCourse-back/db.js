@@ -1,6 +1,6 @@
 require('dotenv').config({path: 'mysql.env'});
-const mysql = require('mysql');
 
+const mysql = require('mysql');
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -26,6 +26,16 @@ exports.addCourse = function (data, readyFn) {
       });
 };
 
+exports.addCourseEvent = function (data, readyFn) {
+  db.query('INSERT INTO Course_Events SET ?', data,
+      function (error, results, fields) {
+        if (error) {
+          return readyFn(null, error);
+        }
+        readyFn(null, results.insertId);
+      });
+};
+
 //Get all courses from the database
 exports.getCourses = function (callback) {
   db.query('SELECT * FROM Course',
@@ -40,7 +50,7 @@ exports.getCourses = function (callback) {
 //Get course from the database
 exports.getCourse = function (courseId, callback) {
   db.query(
-      'SELECT course_id, course_title, location, description, DATE_FORMAT(start_date, "%d-%m-%Y") AS start_date, duration_hours, target_audience, trainer_names FROM Course WHERE course_id = ?',
+      'SELECT course_id, course_title, location, description, DATE_FORMAT(start_date, "%d-%m-%Y") AS start_date, duration_hours, target_audience, trainer_names FROM Course LEFT JOIN Course_Events USING(course_id) WHERE course_id = ?',
       [courseId],
       function (err, rows) {
         if (err) {
@@ -48,4 +58,17 @@ exports.getCourse = function (courseId, callback) {
         }
         callback(null, rows);
       });
+};
+
+exports.getCourseEvents = function(course_id, callback) {
+  db.query(
+      'SELECT course_event_id, course_id, location, DATE_FORMAT(start_date, "%d-%m-%Y") AS start_date, duration_hours, trainer_names FROM Course_Events WHERE course_id = ?',
+      [course_id],
+      function (err, rows) {
+        if (err) {
+          return callback(err, null);
+        }
+        callback(null, rows)
+      }
+  )
 };

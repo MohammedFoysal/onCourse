@@ -35,6 +35,56 @@ const start = module.exports = function makeServer() {
     .custom((value, {req}) => {
       return value.length <= 100
     }),
+    check('description', 'Description must be present')
+    .exists()
+    .custom((value, {req}) => {
+      return value.length > 0
+    }),
+    check('description', 'Description must not exceed a 300 characters')
+    .custom((value, {req}) => {
+      return value.length <= 300
+    }),
+    check('target_audience', 'Target audience must be present')
+    .exists()
+    .custom((value, {req}) => {
+      return value.length > 0
+    }),
+    check('target_audience', 'Target audience must not exceed a 200 characters')
+    .custom((value, {req}) => {
+      return value.length <= 200
+    })
+  ], (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return handleError(errors, req, res);
+    }
+
+    db.addCourse(req.body, (err, insertedId) => {
+      if (err) {
+        return handleError(err, req, res);
+      } else {
+        db.getCourse(insertedId, (err, rows) => {
+          if (err) return handleError(err, req, rows);
+          return res.send(rows[0]);
+        });
+
+      }
+    });
+  });
+
+  app.get('/courses', (req, res) => {
+    db.getCourses((err, rows) => {
+      if (err) {
+        return handleError(err, req, res);
+      }
+      res.send(rows);
+    })
+  });
+
+  app.post('/course-event', [
+    check('course_id', 'course_id must be present')
+    .exists(),
     check('location', 'Location must be valid')
     .custom((value, {req}) => {
       const locations = ['Belfast', 'Derry', 'Dublin', 'London', 'Gdansk',
@@ -53,24 +103,6 @@ const start = module.exports = function makeServer() {
     .custom((value, {req}) => {
       return value > 0;
     }),
-    check('description', 'Description must be present')
-    .exists()
-    .custom((value, {req}) => {
-      return value.length > 0
-    }),
-    check('description', 'Description must not exceed a 300 characters')
-    .custom((value, {req}) => {
-      return value.length <= 300
-    }),
-    check('target_audience', 'Target audience must be present')
-    .exists()
-    .custom((value, {req}) => {
-      return value.length > 0
-    }),
-    check('target_audience', 'Target audience must not exceed a 200 characters')
-    .custom((value, {req}) => {
-      return value.length <= 200
-    }),
     check('trainer_names', 'Trainer names must be present')
     .exists()
     .custom((value, {req}) => {
@@ -82,25 +114,18 @@ const start = module.exports = function makeServer() {
       return value.length <= 100
     })
   ], (req, res) => {
-    const errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-      return handleError(errors, req, res);
-    }
-
-    db.addCourse(req.body, (err, insertedId) => {
+    db.addCourseEvent(req.body, (err, insertedId) => {
       if (err) {
         return handleError(err, req, res);
-      } else {
-        res.send({successful: true});
       }
-    });
+      res.send({course_event_id: insertedId});
+    })
   });
 
-  app.get('/courses', (req, res) => {
-    db.getCourses((err, rows) => {
+  app.get('/course-events/:course_id', (req, res) => {
+    db.getCourseEvents(req.params.course_id, (err, rows) => {
       if (err) {
-        return handleError(err);
+        return handleError(err, req, res);
       }
       res.send(rows);
     })
