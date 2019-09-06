@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Course } from '../list-courses/Course';
+import { CourseEvent } from '../CourseEvent';
 import { format } from 'util';
 import { ListCoursesComponent } from '../list-courses/list-courses.component';
 import { AddCourseEventComponent } from '../add-course-event/add-course-event.component';
