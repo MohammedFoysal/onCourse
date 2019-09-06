@@ -15,6 +15,7 @@ export class AddCourseComponent implements OnInit {
   dataService: DataService;
   course: Course;
   formIsValid:boolean = false;
+  dateCheck: boolean;
 
   form = new FormGroup({
     course_title: new FormControl('', [Validators.required,Validators.maxLength(100)]),
@@ -42,6 +43,7 @@ export class AddCourseComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.dateCheck = true;
     this.course = new Course();
   }
 
@@ -56,6 +58,20 @@ export class AddCourseComponent implements OnInit {
     } else {
       console.log("Can't add")
       alert("The course could not be added");
+    }
+  }
+
+  compareDates(date:any){
+    let todayDate = new Date()
+
+    let dateSplit = date.split('-');
+    var mydate = new Date(dateSplit[0], dateSplit[1] - 1, dateSplit[2]); 
+
+    if (mydate < todayDate){
+      this.dateCheck = false;
+    }
+    else {
+      this.dateCheck = true;
     }
   }
 
