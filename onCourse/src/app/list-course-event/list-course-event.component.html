@@ -1,0 +1,35 @@
+<div class="course-events container">
+    <h2 class="center">Course Events</h2>
+
+
+    <table>
+            <thead>
+                <tr>
+                    <th class="center">Location</th>
+                    <th class="center">Start Date</th>
+                    <th class="center">Duration (hours)</th>
+                    <th class="center">Trainers</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let courseEvent of data.courseEvents" class="center">
+                    <!-- data.listCourses -->
+                    <td class="center">
+                        {{ courseEvent.location }}
+                    </td>
+
+                    <td class="center">
+                        {{ courseEvent.start_date }}
+                    </td>
+
+                    <td class="center">
+                        {{ courseEvent.duration_hours }}
+                    </td>
+
+                    <td class="center">
+                        {{ courseEvent.trainer_names }}
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+</div>

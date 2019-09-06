@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { Course } from '../list-courses/Course';
 import { format } from 'util';
 import { ListCoursesComponent } from '../list-courses/list-courses.component';
+import { AddCourseEventComponent } from '../add-course-event/add-course-event.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
