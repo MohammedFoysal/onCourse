@@ -30,3 +30,12 @@ exports.getCourses = function(callback){
  callback(null, rows);
  });
 }
+
+//Get course from the database
+exports.getCourse = function(courseId, callback){
+ db.query('SELECT course_id, course_title, location, description, DATE_FORMAT(start_date, "%d-%m-%Y") AS start_date, duration_hours, target_audience, trainer_names FROM Course WHERE course_id = ?', [courseId],
+ function(err, rows) {
+     if (err) return callback(err, null);
+     callback(null, rows);
+ });
+}

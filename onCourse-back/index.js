@@ -1,4 +1,4 @@
-module.exports = function makeServer() {
+const start = module.exports = function makeServer() {
 
   const express = require('express');
   const app = express();
@@ -96,14 +96,21 @@ module.exports = function makeServer() {
     });
   });
 
-  app.get('/course', (req, res) => {
-    db.getCourses((err, rows) => {
-      if (err) {
-        return handleError(err);
-      }
-      res.send(rows);
-    })
-  });
+    app.get('/courses', (req, res) => {
+      db.getCourses((err, rows) => {
+        if (err) return handleError(err);
+        res.send(rows);
+      })
+    });
+
+    app.get('/course/:id', (req, res) => {
+      db.getCourse(req.params.id, (err, rows) => {
+        if (err) return handleError(err);
+        res.send(rows[0]);
+      })
+    });
 
   return server;
 }
+
+start();
